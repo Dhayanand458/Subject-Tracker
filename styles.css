@@ -1,0 +1,475 @@
+/* ===== Mobile-First Base Styles ===== */
+:root {
+    /* Replace existing color variables with these: */
+    --color-primary: #5e7ce2; /* Slightly muted blue for better contrast */
+    --color-primary-hover: #4a6bd1;
+    --color-danger: #ff5a5f; /* Brighter red for visibility */
+    --color-danger-hover: #ff3b40;
+    --color-success: #4cc9f0; /* Keep success color (stands out well) */
+    --color-success-hover: #3ab5e0;
+
+    /* Titanium Dark Theme (iPhone 15 Pro-inspired) */
+    --color-text: #ffffff; /* White text for contrast */
+    --color-text-light: #a0a0a0; /* Light gray for secondary text */
+    --color-bg: #1a1a1a; /* Dark titanium base (almost black) */
+    --color-surface: #2a2a2a; /* Slightly lighter for cards/modals */
+    --color-border: #3a3a3a; /* Subtle borders */
+    --color-shadow: rgba(0, 0, 0, 0.3); /* Deeper shadows */
+    --color-modal-overlay: rgba(0, 0, 0, 0.6); /* More opaque overlay */
+  
+    /* Typography (Scalable for Mobile) */
+    --font-base: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-size-title: clamp(1.5rem, 4vw, 1.75rem); /* Responsive scaling */
+    --font-size-body: clamp(0.875rem, 3vw, 0.9375rem);
+    --font-size-small: 0.8125rem;
+    --line-height: 1.6;
+  
+    /* Spacing System */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-xxl: 3rem;
+  
+    /* Borders */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-full: 999px;
+  
+    /* Shadows (Optimized for Performance) */
+    --shadow-sm: 0 1px 2px var(--color-shadow);
+    --shadow-md: 0 4px 6px -1px var(--color-shadow);
+    --shadow-lg: 0 10px 15px -3px var(--color-shadow);
+    --shadow-focus: 0 0 0 3px rgba(67, 97, 238, 0.15);
+  
+    /* Transitions */
+    --transition-fast: 0.15s ease;
+    --transition-medium: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+    /* Safe Area Insets for Notch Phones */
+    --safe-area-top: env(safe-area-inset-top, 0px);
+    --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  
+  /* ===== Base Reset ===== */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight */
+  }
+  
+  html {
+    height: 100%;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+  }
+  
+  body {
+    font-family: var(--font-base);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    line-height: var(--line-height);
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%; /* Prevent font scaling */
+    min-height: 100vh;
+    min-height: -webkit-fill-available; /* Mobile viewport fix */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* ===== App Container ===== */
+  .app-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: calc(var(--space-xl) + var(--safe-area-top)) var(--space-md) calc(var(--space-xl) + var(--safe-area-bottom));
+    flex: 1;
+  }
+  
+  /* ===== Header ===== */
+  .app-header {
+    position: sticky;
+    top: 0;
+    background: var(--color-bg);
+    z-index: 50;
+    padding-bottom: var(--space-md);
+    margin-bottom: var(--space-lg);
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-md);
+  }
+  
+  .app-title {
+    font-size: var(--font-size-title);
+    font-weight: 700;
+    color: var(--color-text);
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  /* ===== Subject List ===== */
+  #subjects-list {
+    display: grid;
+    gap: var(--space-md);
+    width: 100%;
+  }
+  
+  .subject-container {
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-medium);
+    border: 1px solid var(--color-border);
+    width: 100%;
+  }
+  
+  .subject-container:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
+  }
+  
+  .subject-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+    flex-wrap: wrap;
+  }
+  
+  .subject-number {
+    font-weight: 600;
+    color: var(--color-primary);
+    min-width: 24px;
+  }
+  
+  /* ===== Form Elements (Mobile Optimized) ===== */
+  select, textarea, input {
+    font-family: var(--font-base);
+    font-size: var(--font-size-body);
+    padding: var(--space-sm) var(--space-md);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
+    transition: all var(--transition-fast);
+    width: 100%;
+  }
+  
+  select:focus, textarea:focus, input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-focus);
+  }
+  
+  /* Custom dropdown arrow */
+  select {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right var(--space-sm) center;
+    background-size: 1em;
+    padding-right: var(--space-xl);
+  }
+  
+  .subject-name-select, .subject-type {
+    flex: 1 1 100%;
+    min-width: 0; /* Fix flexbox overflow */
+  }
+  
+  .subject-notes {
+    min-height: 100px;
+    resize: vertical;
+  }
+  
+  .subject-details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-top: var(--space-sm);
+  }
+  
+  .subject-actions {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: flex-end;
+  }
+  
+  /* ===== Buttons (Touch Targets) ===== */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: var(--font-size-body);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    border: none;
+    user-select: none;
+    min-height: 44px; /* Minimum touch target */
+    min-width: 44px;
+  }
+  
+  .btn-submit {
+    background: var(--color-success);
+    color: white;
+  }
+  
+  .btn-submit:hover, .btn-submit:active {
+    background: var(--color-success-hover);
+    transform: translateY(-1px);
+  }
+  
+  .btn-delete {
+    background: var(--color-danger);
+    color: white;
+  }
+  
+  .btn-delete:hover, .btn-delete:active {
+    background: var(--color-danger-hover);
+    transform: translateY(-1px);
+  }
+  
+  .btn-add {
+    position: fixed;
+    bottom: calc(var(--space-xl) + var(--safe-area-bottom));
+    right: var(--space-xl);
+    width: 56px;
+    height: 56px;
+    border-radius: var(--radius-full);
+    background: var(--color-primary);
+    color: white;
+    box-shadow: var(--shadow-lg);
+    transition: all var(--transition-medium);
+    z-index: 100;
+  }
+  
+  .btn-add:hover, .btn-add:active {
+    background: var(--color-primary-hover);
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 10px 20px -5px rgba(67, 97, 238, 0.3);
+  }
+  
+  .btn-add svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  /* ===== Modal (Mobile Fullscreen) ===== */
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color-modal-overlay);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-medium);
+    padding: var(--safe-area-top) var(--space-md) var(--safe-area-bottom);
+  }
+  
+  .modal.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+  
+  .modal-content {
+    background: var(--color-surface);
+    border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    width: 100%;
+    max-width: 400px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow-lg);
+    transform: translateY(10px);
+    transition: transform var(--transition-medium);
+    -webkit-overflow-scrolling: touch; /* Smooth iOS scrolling */
+  }
+  
+  .modal.active .modal-content {
+    transform: translateY(0);
+  }
+  
+  .modal-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+  }
+  
+  .modal-message {
+    color: var(--color-text-light);
+    margin-bottom: var(--space-lg);
+  }
+  
+  .modal-buttons {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: flex-end;
+  }
+  
+  .modal-btn {
+    padding: var(--space-sm) var(--space-md);
+    min-width: 80px;
+  }
+  
+  .modal-btn-confirm {
+    background: var(--color-danger);
+    color: white;
+  }
+  
+  .modal-btn-confirm:hover {
+    background: var(--color-danger-hover);
+  }
+  
+  .modal-btn-cancel {
+    background: var(--color-border);
+    color: var(--color-text);
+  }
+  
+  .modal-btn-cancel:hover {
+    background: #e2e6ea;
+  }
+  
+  /* ===== Toggle Icons ===== */
+  .toggle-icons-container {
+    display: flex;
+    gap: var(--space-sm);
+  }
+  
+  .icon-button {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    border-radius: var(--radius-full);
+    color: var(--color-text-light);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    touch-action: manipulation; /* Remove touch delay */
+  }
+  
+  .icon-button:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--color-primary);
+  }
+  
+  .icon-button svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  /* ===== Utility Classes ===== */
+  .hidden {
+    display: none !important;
+  }
+  
+  /* ===== Responsive Breakpoints ===== */
+  @media (min-width: 600px) {
+    .app-container {
+      padding: calc(var(--space-xxl) + var(--safe-area-top)) var(--space-xl) calc(var(--space-xxl) + var(--safe-area-bottom));
+    }
+  
+    .subject-details {
+      flex-direction: row;
+    }
+  
+    .subject-notes {
+      min-height: 120px;
+    }
+  
+    .subject-name-select, .subject-type {
+      flex: 1 1 auto;
+    }
+  }
+  
+  /* Large Mobile (Landscape) */
+  @media (max-height: 500px) and (orientation: landscape) {
+    .app-container {
+      padding-top: var(--space-md);
+    }
+  
+    .subject-container {
+      padding: var(--space-sm);
+    }
+  
+    .btn-add {
+      bottom: var(--space-md);
+      right: var(--space-md);
+      width: 48px;
+      height: 48px;
+    }
+  }
+  
+  /* iOS Specific Fixes */
+  @supports (-webkit-touch-callout: none) {
+    body {
+      /* Safari mobile vh fix */
+      min-height: -webkit-fill-available;
+    }
+  
+    textarea, input {
+      font-size: 16px; /* Prevent iOS zoom */
+    }
+  }
+  
+  /* Android Chrome Address Bar Fix */
+  @media (max-height: 700px) {
+    .btn-add {
+      bottom: calc(var(--space-md) + var(--safe-area-bottom));
+    }
+  }
+  
+  /* Windows High Contrast Mode */
+  @media (forced-colors: active) {
+    .subject-container {
+      border: 2px solid transparent;
+      forced-color-adjust: none;
+    }
+  }
+
+  /* ===== Input & Dropdown Styling ===== */
+select, textarea, input {
+  color: white !important; /* Forces white text */
+  background-color: var(--color-surface) !important; /* Dark background */
+}
+
+/* Placeholder text (white with slight transparency) */
+::placeholder {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Dropdown arrow icon (white) */
+select {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e") !important;
+}
+
+/* Selected dropdown option (dark bg + white text) */
+option {
+  color: white !important;
+  background-color: var(--color-surface);
+}
+
+/* Textarea typed text */
+textarea, input {
+  color: white !important;
+}

@@ -413,3 +413,13 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('service-worker.js')
     .then(reg => console.log('Service worker registered.', reg));
 }
+
+
+
+// Prevent long-press text selection on mobile
+document.addEventListener('contextmenu', function(e) {
+  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    e.preventDefault();
+  }
+});
+

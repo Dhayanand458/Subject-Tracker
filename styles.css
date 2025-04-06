@@ -473,3 +473,25 @@ option {
 textarea, input {
   color: white !important;
 }
+
+
+
+/* ===== Disable Text Selection ===== */
+.app-header, .app-content, .modal-content, 
+.btn, .subject-container, .subject-name-select, 
+.subject-type, .subject-notes, .icon-button {
+  -webkit-user-select: none; /* Safari/iOS */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE/Edge */
+  user-select: none; /* Standard */
+  cursor: default; /* Remove text-select cursor */
+}
+
+/* Allow text selection ONLY in textarea/input for notes */
+.subject-notes {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+

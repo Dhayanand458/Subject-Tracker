@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const invisibleModeIcon = document.getElementById("invisible-mode-toggle");
 
   // Constants
-  const predefinedSubjects = ["Java", "Python", "C++"];
+  const predefinedSubjects = ["Java", "Python", "C++", "HRM"];
 
   // State Variables
   let subjects = [];

@@ -132,6 +132,9 @@ document.addEventListener("DOMContentLoaded", function () {
             <option value="online assignments" ${
               subject.type === "online assignments" ? "selected" : ""
             }>Online Assignments</option>
+ <option value="announcement" ${
+              subject.type === "announcement" ? "selected" : ""
+            }>announcement</option>
             <option value="Mini Test" ${
               subject.type === "Mini Test" ? "selected" : ""
             }>Mini Test</option>

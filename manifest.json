@@ -1,6 +1,6 @@
 {
-    "name": "My Installable App",
-    "short_name": "InstallApp",
+    "name": "Tasks",
+    "short_name": "Tasks",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#ffffff",

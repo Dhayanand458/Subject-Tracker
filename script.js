@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const invisibleModeIcon = document.getElementById("invisible-mode-toggle");
 
   // Constants
-  const predefinedSubjects = ["FOOS", "an example"];
+  const predefinedSubjects = ["BASICS OF BUSINESS", "ACCOUNTING AND ECONOMICS",     "ADS","INTRODUCTION TO BUSINESS"];
 
   // State Variables
   let subjects = [];
